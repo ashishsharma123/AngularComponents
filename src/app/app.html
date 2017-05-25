@@ -1,0 +1,40 @@
+<md-toolbar color="primary">
+    <span>Select Demo!!!!</span>
+    </md-toolbar>
+    <br><br><br>
+  <md-list>
+  <md-list-item>
+     <Custom-select isMultipleSelection="false" placeholder="Select Food" [data]="foods" floatedLabel="false"
+   [(value)]="selectedValue" (ngModelChange)="setData($event)"></Custom-select>
+  </md-list-item>
+  <md-list-item>
+    <button md-raised-button *ngIf="selectedValue">Selected Value is : {{selectedValue}}</button>    
+  </md-list-item>
+  <br>
+  <md-list-item>
+     <Custom-select isMultipleSelection="true" placeholder="Select Food" [data]="foods1" floatedLabel="false"
+   [(value)]="selectedMultipleValue" (ngModelChange)="setMultipleData($event)"></Custom-select>
+  </md-list-item>
+  <md-list-item>
+    <button md-raised-button *ngIf="selectedMultipleValue">Selected Value is : {{selectedMultipleValue}}</button>    
+  </md-list-item>
+   </md-list>
+
+		<div class="search-results" 
+		     data-infinite-scroll
+        debounce
+		    [infiniteScrollDistance]="2"
+		    [infiniteScrollUpDistance]="1.5"
+		    [infiniteScrollThrottle]="200"
+		    (scrolled)="onScrollDown()"
+		    (scrolledUp)="onScrollUp()">
+		
+    <md-list>
+    <md-list-item *ngFor="let a of arr">
+      <h4>{{a}}</h4>
+      <hr>
+    </md-list-item>
+    
+    </md-list>
+    </div>
+    <md-progress-spinner mode="indeterminate" *ngIf="showLoader" class="example-margin" _color="black"></md-progress-spinner>
